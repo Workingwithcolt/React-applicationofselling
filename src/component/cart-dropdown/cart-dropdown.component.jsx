@@ -21,6 +21,7 @@ const CartDropdown  = ({cartItems}) =>(
             null
         
     }
+    
     </div>
     <CustomButton>{' '} Go To CHECKOUT {' '}</CustomButton>
     </div>
