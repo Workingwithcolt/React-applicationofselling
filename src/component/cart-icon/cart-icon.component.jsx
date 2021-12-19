@@ -1,5 +1,7 @@
 import React from 'react'
 
+import {selectCartItemsCount} from '../Redux/cart/cart.selector'
+
 import {ReactComponent as ShoppingIcon} from '../../component/Icon/shopping-bag.svg'
 
 import './cart-icon.style.scss'
@@ -8,30 +10,27 @@ import { connect } from 'react-redux'
 
 import { toggleCartHidden } from '../../component/Redux/cart/cart.action'
 
-var value = 0;
+// var value = 0;
 
-const calculate  = ({cartItems}) =>{
-    let val = 0;
-    for(let i = 0;i<cartItems.length;i++){
-       val += cartItems[i].quantity
-}value = val
-return value
-}
-const CartIcon = ({toggleCartHidden,cartItems}) =>(
+
+
+const CartIcon = ({toggleCartHidden,itemCount}) =>(
     <div className = 'cart-icon' onClick = { toggleCartHidden }>
     <ShoppingIcon className = 'shopping-icon'/>
-    <span className = 'item-count'>{value}</span>
+    
+    <span className = 'item-count'>{itemCount}</span>
     </div>
 )
 
-const mapStateToProps = ({cart:{cartItems}}) =>{
-    let val = 0;
-    for(let i = 0;i<cartItems.length;i++){
-       val += cartItems[i].quantity
-}
-    value = val
-    return value   
-}
+const mapStateToProps = (state) =>({
+//     let val = 0;
+//     for(let i = 0;i<cartItems.length;i++){
+//        val += cartItems[i].quantity
+// }
+//     value = val
+//     return value   
+itemCount:selectCartItemsCount(state)
+})
 const mapDispatchToProps = dispatch =>({
     toggleCartHidden: ()=> dispatch(toggleCartHidden())
 });
