@@ -4,7 +4,9 @@
     height:80px;
     margin-bottom:15px;
     img{
-        widows: 30%;
+        width: 30%;
+        object-fit: cover;
+        height: 100%;
     }
     .item-details{
         width:70%;
