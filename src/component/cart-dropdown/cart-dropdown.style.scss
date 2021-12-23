@@ -12,6 +12,12 @@
     margin-left: 65%;
     z-index: 5;
     
+    .empty-message{
+        font-size:20px;
+        margin: 50px auto;
+        color:aqua;
+        font-weight: 10px;
+    }
     .cart-items{
         height:240px;
         display:flex;

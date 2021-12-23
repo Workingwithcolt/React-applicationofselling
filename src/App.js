@@ -2,11 +2,16 @@ import React from 'react';
 
 import './App.css';
 
+import { selectCurrentUser }  from '../src/component/Redux/user/user.selector'
+
+
 import {Route,Switch,Redirect} from 'react-router-dom';
 
 import HomePage from '../src/component/pages/homepage/Homepage.component';
 
 import ShopPage from '../src/component/pages/shop/shop.component';
+
+import CheckoutPage from '../src/component/pages/checkout/checkout.component'
 
 import Header from '../src/component/header/header.component';
 
@@ -104,8 +109,10 @@ class  App extends React.Component{
       <Switch>
       <Route exact path= '/' component = {HomePage}/>
       <Route exact  path= '/shop' component = {ShopPage}/>
+      <Route exact path = '/checkout' component ={CheckoutPage}/>
       <Route exact  path= '/signIn' render = {() => this.props.currentUser ? <Redirect to='/'/> : <SignInAndSignUpPage/>}/>
       {/* <Route exact path ='/hats/TopicDetail' component={TopicDetail}/> */}
+      
       </Switch>
       </div>
   );
@@ -114,8 +121,8 @@ class  App extends React.Component{
 
 // That bellow funtion we use for getting the current User from the root redux for the use of the above 
 //Redirect function 
-const mapStateToProps = ({user}) =>({
-  currentUser:user.currentUser
+const mapStateToProps = (state) =>({
+  currentUser:selectCurrentUser(state)
 })
 
 const mapDispatchToProps = (dispatch) => {
