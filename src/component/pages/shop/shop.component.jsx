@@ -8,8 +8,7 @@ import CollectionPreview from '../../preview-collection/collection-preview.compo
 
 import {selectCollections} from '../../Redux/shop/shop.selectors'
 
-const  ShopPage = ({collections}) =>{
-    return (
+const ShopPage = ({collections}) =>(
         <div className='shop-page'>
         {
             collections.map(({id,...otherCollectionProps})=>(
@@ -19,8 +18,7 @@ const  ShopPage = ({collections}) =>{
 
         </div>
     )
-}
-const mapStateToProps = createStructuredSelector =>({
+const mapStateToProps = createStructuredSelector({
     collections:selectCollections
 })
 export default connect(mapStateToProps)(ShopPage);
