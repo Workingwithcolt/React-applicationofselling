@@ -21,6 +21,9 @@ import {auth,createUserProfileDocument} from '../src/component/firebase/fiberbas
 
 import { connect } from 'react-redux'
 
+import CollectionPage from '../src/component/pages/collection/collection.component'
+
+
 import { setCurrentUser } from '../src/component/Redux/user.action'
 
 
@@ -107,12 +110,12 @@ class  App extends React.Component{
     <div>
       <Header/>
       <Switch>
-      <Route exact path= '/' component = {HomePage}/>
-      <Route exact  path= '/shop' component = {ShopPage}/>
+      <Route exact path = '/' component = {HomePage}/>
+      <Route  path = '/shop' component = {ShopPage}/>
       <Route exact path = '/checkout' component ={CheckoutPage}/>
       <Route exact  path= '/signIn' render = {() => this.props.currentUser ? <Redirect to='/'/> : <SignInAndSignUpPage/>}/>
       {/* <Route exact path ='/hats/TopicDetail' component={TopicDetail}/> */}
-      
+      {/* <Route exact path = {'/shop/:collectionId'} component = {CollectionPage}/> */}
       </Switch>
       </div>
   );

@@ -1,10 +1,11 @@
 import React from 'react';
 
-import {Route} from 'react-router-dom'
+import {Route,Switch} from 'react-router-dom'
 
 import {connect} from 'react-redux'
 
 import {createStructuredSelector} from 'reselect'
+
 
 
 import CollectionPreview from '../../preview-collection/collection-preview.component';
@@ -15,11 +16,16 @@ import CollectionsOverview from '../../collections-overview/collections-overview
 
 import CollectionPage from '../collection/collection.component'
 
-const ShopPage = ({match}) =>(
+const ShopPage = ({match}) =>{
+    // console.log(Props)
+    const {path} = match
+    console.log(path+"This our path")
+    return (
         <div className='shop-page'>
-            <Route exact path ={`${match.path}`} component = {CollectionsOverview}/>
-            <Route path ={`${match.path}/:collectionId`} component = {CollectionPage}/>
+            <Route exact path ={`${path}`} component = {CollectionsOverview}/>
+            <Route exact path = {`${path}/:collectionId`} component = {CollectionPage}/>
         </div>
-    )
+    )}
+    
 
 export default ShopPage;

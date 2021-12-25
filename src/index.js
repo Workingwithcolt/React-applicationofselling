@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 
 import {PersistGate} from 'redux-persist/integration/react'
 
-
+import {CollectionPage} from '../src/component/pages/collection/collection.component'
 
 import './index.css';
 
