@@ -1,6 +1,6 @@
 {
-  "name": "react-firebase",
-  "version": "2.2.8",
+  "name": "@firebase/firestore",
+  "version": "3.4.1",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
