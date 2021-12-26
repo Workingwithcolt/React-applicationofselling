@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/Workingwithcolt/React-applicationofsellingstatic/css/main.d2b30574.chunk.css",
+    "main.js": "/Workingwithcolt/React-applicationofsellingstatic/js/main.3c2e1d19.chunk.js",
+    "main.js.map": "/Workingwithcolt/React-applicationofsellingstatic/js/main.3c2e1d19.chunk.js.map",
+    "runtime-main.js": "/Workingwithcolt/React-applicationofsellingstatic/js/runtime-main.53d861cd.js",
+    "runtime-main.js.map": "/Workingwithcolt/React-applicationofsellingstatic/js/runtime-main.53d861cd.js.map",
+    "static/js/2.7cad88d4.chunk.js": "/Workingwithcolt/React-applicationofsellingstatic/js/2.7cad88d4.chunk.js",
+    "static/js/2.7cad88d4.chunk.js.map": "/Workingwithcolt/React-applicationofsellingstatic/js/2.7cad88d4.chunk.js.map",
+    "index.html": "/Workingwithcolt/React-applicationofsellingindex.html",
+    "static/css/main.d2b30574.chunk.css.map": "/Workingwithcolt/React-applicationofsellingstatic/css/main.d2b30574.chunk.css.map",
+    "static/js/2.7cad88d4.chunk.js.LICENSE.txt": "/Workingwithcolt/React-applicationofsellingstatic/js/2.7cad88d4.chunk.js.LICENSE.txt",
+    "static/media/shopping-bag.a688874f.svg": "/Workingwithcolt/React-applicationofsellingstatic/media/shopping-bag.a688874f.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.53d861cd.js",
+    "static/js/2.7cad88d4.chunk.js",
+    "static/css/main.d2b30574.chunk.css",
+    "static/js/main.3c2e1d19.chunk.js"
+  ]
+}
