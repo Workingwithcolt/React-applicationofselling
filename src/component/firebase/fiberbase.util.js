@@ -1,7 +1,7 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import {getFirestore,setDoc,doc, addDoc,updateDoc, collection, getDoc, onSnapshot} from 'firebase/firestore'
-import { getAuth } from "@firebase/auth";
+import { getAuth } from "firebase/auth";
 // import  "@firebase/firestore";
 
 const firebaseConfig = {
