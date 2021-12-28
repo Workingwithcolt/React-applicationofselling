@@ -40,7 +40,7 @@ const CartDropdown  = ({CartItemss,history,dispatch}) =>(
         }>{' '} Go To CHECKOUT {' '}</CustomButton>
     </div>
 )
-const mapStateToProps =createStructuredSelector({
+const mapStateToProps = createStructuredSelector({
     CartItemss:selectCartItems,
     hidden:selectCarthidden
 })
