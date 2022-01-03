@@ -4,7 +4,8 @@ import './App.css';
 
 import { selectCurrentUser }  from '../src/component/Redux/user/user.selector'
 
-
+import {selectCollectionForPreview} from './component/Redux/shop/shop.selectors'
+ 
 import {Route,Switch,Redirect} from 'react-router-dom';
 
 import HomePage from '../src/component/pages/homepage/Homepage.component';
@@ -17,7 +18,7 @@ import Header from '../src/component/header/header.component';
 
 import SignInAndSignUpPage from '../src/component/pages/sign-in-and-sign-up/sign-in-and-sign-up.component'
 
-import {auth,createUserProfileDocument} from '../src/component/firebase/fiberbase.util'
+import {auth,createUserProfileDocument,addCollectionAndDocuments} from '../src/component/firebase/fiberbase.util'
 
 import { connect } from 'react-redux'
 
@@ -86,7 +87,7 @@ class  App extends React.Component{
   
   unsubscribeFromAuth = null
   componentDidMount(){
-    const { setCurrentUser } = this.props; 
+    const { setCurrentUser, collectionArray} = this.props; 
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async user =>{
       // this.setState({ 
       //   currentUser:user
@@ -97,6 +98,7 @@ class  App extends React.Component{
         console.log(user)
     }
     setCurrentUser(user)
+    addCollectionAndDocuments('collections',collectionArray.map(({title,items})=>({title,items})))
   })
 
     // console.log(this.state)  
@@ -125,7 +127,8 @@ class  App extends React.Component{
 // That bellow funtion we use for getting the current User from the root redux for the use of the above 
 //Redirect function 
 const mapStateToProps = (state) =>({
-  currentUser:selectCurrentUser(state)
+  currentUser:selectCurrentUser(state),
+  collectionArray:selectCollectionForPreview(state)
 })
 
 const mapDispatchToProps = (dispatch) => {

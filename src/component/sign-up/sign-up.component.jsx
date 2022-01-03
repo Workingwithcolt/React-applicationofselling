@@ -27,17 +27,20 @@ class SignUp extends React.Component{
             alert("Password Dont Match")
             return;
         }
+         const Name = "";
     try{
-         const user =await createUserWithEmailAndPassword(auth ,email,password ).then((userCredential)=>{
+         const user = await createUserWithEmailAndPassword(auth ,email,password).then((userCredential)=>{
              const user = userCredential.user
              console.log(userCredential)
              console.log("dfdnjf")
+             Name = auth.displayName
              return user
          }).catch((e) =>{
              console.log(e)
          })
          console.log("sd")
-         createUserProfileDocument(user,displayName);
+         createUserProfileDocument(user,Name);
+         Name = ""
          this.setState({
             displayName:'',
             email:'',

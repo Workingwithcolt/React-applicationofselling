@@ -1,7 +1,9 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
-import {getFirestore,setDoc,doc, addDoc,updateDoc, collection, getDoc, onSnapshot} from 'firebase/firestore'
+import {getFirestore,setDoc,doc, addDoc,updateDoc, collection, getDoc, onSnapshot, writeBatch} from 'firebase/firestore'
 import { getAuth } from "firebase/auth";
+import { set } from "immutable";
+import { async } from "@firebase/util";
 // import  "@firebase/firestore";
 
 const firebaseConfig = {
@@ -55,6 +57,7 @@ const firestore =   getFirestore();
 //   }
 // }
 
+//if it is collection does not exist then it is created
 // const orderCollection = collection(firestore,'sorders');
 // async function addANewDocument(){
 //   const newDoc = await addDoc(orderCollection,{
@@ -76,9 +79,35 @@ const firestore =   getFirestore();
 // const field = doc(firestore,'App_Users/User_information')
 // const fields = collection(firestore,'App_Users');
 const auth = getAuth(app)
+
+// const collectionRef = collection('users')
+// const snapashot = doc()
+// const collectionSnapshot = await collectionRef.getDoc()
+// console.log(collectionSnapshot +"That is t")
 export const createUserProfileDocument = async (userAuth,additionalData) =>{
   if(!userAuth) return;
-  if(additionalData === ""){
+  // const { displayName} = userAuth
+  // console.log(displayName)
+  // const DocumentRef = doc(firestore, 'users', `${displayName}`);
+  // const collectionRef = collection(firestore, 'users');
+  // console.log(collectionRef)
+  // console.log(DocumentRef)
+  // console.log("It is an reference")
+  // try{
+  // const collectionSnapshot =await  onSnapshot(collection(firestore, "users"),(snapshot) => {
+  //  console.log(snapshot)
+  //  console.log("It is snapshot")
+  //  snapshot.docs.map(doc => console.log(doc.data()))
+  // },
+  // (error) => {
+  // })
+  // console.log(collectionSnapshot+"it is me")
+  // }catch(e){
+  //   console.log(e)
+  //   console.log("error is under e")
+  // }
+  // console.log("Above is the snapshot")
+  if(additionalData != ""){
   const { displayName,email, metadata } = userAuth
   console.log(displayName)
   console.log(email)
@@ -98,15 +127,21 @@ export const createUserProfileDocument = async (userAuth,additionalData) =>{
   console.log(email)
   console.log(metadata.creationTime)
   try{
-  await setDoc(doc(firestore,`users/${additionalData}`),{
-    displayName:additionalData,
+  await setDoc(doc(firestore,`users/${email}`),{
     email:email,
-    createAt:metadata.creationTime
+    createdAt:metadata.creationTime
   },{merge:true})
 }catch(e){
   console.log(e)
 }
 }
+
+//that is used for getting the reference of the collection 
+// const querySnapshot = await getDoc(collection(firestore, "users"));
+// querySnapshot.forEach((doc) => {
+//   console.log(`${doc.id} => ${doc.data()}`);
+// });
+// console.log(querySnapshot)
 }
 // async function readASingleDocument(){
 //   const mySnapshot =  await getDoc(specialOfTheDay)
@@ -125,6 +160,18 @@ export const createUserProfileDocument = async (userAuth,additionalData) =>{
 // listenToADocument()
 
 
+export const addCollectionAndDocuments = async (collectionKey, objectToAdd) =>{
+  const collectionRef = collection(firestore,collectionKey)
+  // console.log("It is the collectionref")
+  // console.log(collectionRef)
+  const batch = writeBatch(firestore)
+  objectToAdd.forEach(obj => {
+    const newDocRef = doc(collectionRef)
+    batch.set(newDocRef,obj)
+  });
+  return  await batch.commit()
+}
+
 
 export {firebase}
 
@@ -138,4 +185,74 @@ export {auth,firestore}
 // provider.setCustomParameter({prompt:'select_account'});
 
 // export const SignInWithGoogle = () => auth.signInWithPopup()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
